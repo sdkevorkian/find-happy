@@ -1,0 +1,21 @@
+<div class="row">
+    <% if (alerts && alerts.success) { %>
+        <% alerts.success.forEach(function(msg) { %>
+            <div class="col s8 offset-s2">
+                <div class="card-panel teal lighten-3">
+                    <span class="white-text"><%=msg %></span>
+                </div>
+            </div>
+        <% }); %>
+    <%} %>
+
+    <% if (alerts && alerts.error) { %>
+        <% alerts.error.forEach(function(msg) { %>
+            <div class="col s8 offset-s2">
+                <div class="card-panel red lighten-3">
+                    <span class="white-text"><%=msg %></span>
+                </div>
+            </div>
+        <% }); %>
+<%} %>
+</div>

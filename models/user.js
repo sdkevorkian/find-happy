@@ -36,7 +36,8 @@ module.exports = function(sequelize, DataTypes) {
                     }
                 }
             }
-        }
+        },
+        firstName: DataTypes.STRING
     }, {
         hooks: {
             beforeCreate: function(user, options, cb) {
@@ -46,25 +47,22 @@ module.exports = function(sequelize, DataTypes) {
                 }
                 cb(null, user);
             }
-        }
-    }, {
+        },
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
                 models.user.hasMany(models.address);
             }
-        }
-    }, {
+        },
         instanceMethods: {
             isValidPassword: function(passwordTyped) {
-                console.log(bcrypt);
                 return bcrypt.compareSync(passwordTyped, this.password);
+            },
+            toJSON: function() {
+                var data = this.get();
+                delete data.password;
+                return data;
             }
-        },
-        toJSON: function() {
-            var data = this.get();
-            delete data.password;
-            return data;
         }
     });
     return user;
