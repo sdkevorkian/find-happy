@@ -6,6 +6,7 @@ var ejsLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('./config/passport-config');
+var methodOverride = require('method-override');
 var isLoggedIn = require('./middleware/isLoggedIn');
 // may make separate controller for map page and use above middleware ?? may need it here
 
@@ -15,6 +16,24 @@ rowdy.begin(app);
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('morgan')('dev'));
+app.use(methodOverride('_method'));
+
+app.use(function(req, res, next) {
+    // this middleware will call for each requested
+    // and we checked for the requested query properties
+    // if _method was existed
+    // then we know, clients need to call DELETE request instead
+    // from http://stackoverflow.com/questions/34926876/override-method-get-to-delete-in-nodejs-using-anchor-tag
+    if (req.query._method == 'DELETE') {
+        // change the original METHOD
+        // into DELETE method
+        req.method = 'DELETE';
+        // and set requested url to /user/12
+        req.url = req.path;
+    }
+    next();
+});
+
 app.use(ejsLayouts);
 app.use(session({
     secret: process.env.SESSION_SECRET,

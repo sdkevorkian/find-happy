@@ -3,8 +3,12 @@
     <ul>
     <%addresses.forEach(function(address){%>
       <li>
-            <p><%=address.name%></p>
-            <p><%=address.address%></p>
+            <p>
+                  <%=address.name%>:
+                  <%=address.address%>
+                  <a href="/addresses/<%=address.id %>/edit"><i class="tiny material-icons">create</i></a>
+                  <a href="/addresses/<%=address.id %>?_method=DELETE"><i class="tiny material-icons">clear</i></a>
+            </p>
       </li>
     <%})%>
     </ul>
