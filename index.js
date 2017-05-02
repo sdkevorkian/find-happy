@@ -7,7 +7,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('./config/passport-config');
 var isLoggedIn = require('./middleware/isLoggedIn');
-// may make separate controller for map page and use above middleware
+// may make separate controller for map page and use above middleware ?? may need it here
 
 var app = express();
 
@@ -33,10 +33,11 @@ app.use(function(req, res, next) {
 
 // routes!
 app.get('/', function(req, res) {
-    res.send("welcome");
+    res.render('landing');
 });
 
 // controllers
+app.use('/addresses', require('./controllers/addresses'));
 app.use('/auth', require('./controllers/auth'));
 
 app.listen(3000, function() {

@@ -1,0 +1,12 @@
+<div class="container center-align">
+    <h1>Your Addresses</h1>
+    <ul>
+    <%addresses.forEach(function(address){%>
+      <li>
+            <p><%=address.name%></p>
+            <p><%=address.address%></p>
+      </li>
+    <%})%>
+    </ul>
+    <a class="waves-effect waves-light btn-large" href="/addresses/new">ADD ANOTHER</a>
+</div>

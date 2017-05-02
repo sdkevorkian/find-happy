@@ -1,5 +1,6 @@
 var express = require('express');
 var passport = require('../config/passport-config');
+var isLoggedIn = require('../middleware/isLoggedIn');
 var db = require('../models');
 var router = express.Router();
 
@@ -16,9 +17,9 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/auth/profile',
     // change above to include first name of user
-    successFlash: "let's look for some local fun!",
+    // successFlash: "let's look for some local fun!",
     failureRedirect: '/auth/login',
     failureFlash: 'Oops, wrong login'
 }));
@@ -42,13 +43,12 @@ router.post('/signup', function(req, res, next) {
             'birthdate': req.body.birthdate
         }
     }).spread(function(user, wasCreated) {
-        console.log("user: " + user + "was created" + wasCreated);
         if (wasCreated) {
             //sign up successful
             passport.authenticate('local', {
-                successRedirect: '/',
+                successRedirect: '/addresses/new',
                 //change to include first of user
-                successFlash: 'We hope you find your happy',
+                successFlash: 'We hope you find your happy, please add some addresses to search around',
                 failureRedirect: '/auth/signup',
                 failureFlash: 'unknown error occured, please try again'
             })(req, res, next);
@@ -57,10 +57,20 @@ router.post('/signup', function(req, res, next) {
             res.redirect('/auth/login');
         }
     }).catch(function(error) {
-        console.log(error);
         req.flash('error', error.message);
         res.redirect('/auth/signup');
     });
+});
+
+/*
+
+    PROFILE
+
+*/
+
+router.get('/profile', isLoggedIn, function(req, res) {
+    res.render('auth/profile');
+
 });
 
 /*
