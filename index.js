@@ -1,7 +1,7 @@
 require('dotenv').config();
 var express = require('express');
 var rowdy = require('rowdy-logger');
-var morgan = require('morgan');
+var path = require("path");
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
 var session = require('express-session');
@@ -10,7 +10,6 @@ var passport = require('./config/passport-config');
 var methodOverride = require('method-override');
 // var isLoggedIn = require('./middleware/isLoggedIn');
 // may make separate controller for map page and use above middleware ?? may need it here
-
 var app = express();
 
 rowdy.begin(app);
@@ -18,6 +17,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('morgan')('dev'));
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
     // this middleware will call for each requested
@@ -59,6 +59,7 @@ app.get('/', function(req, res) {
 // controllers
 app.use('/addresses', require('./controllers/addresses'));
 app.use('/auth', require('./controllers/auth'));
+app.use('/map', require('./controllers/map'));
 
 app.listen(3000, function() {
     rowdy.print();
