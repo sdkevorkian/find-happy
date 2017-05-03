@@ -1,5 +1,9 @@
-<h1>Welcome, <%=currentUser.firstName%></h1>
-<!-- link to view addresses input-->
+<div class="container center-align">
+    <h1>Welcome, <%=currentUser.firstName%></h1>
+
+    <a class="waves-effect waves-light btn-large" href="/addresses">VIEW SAVED ADDRESSES</a>
+    <a class="waves-effect waves-light btn-large" href="/auth/profile/<%=user.id%>/edit">EDIT PROFILE</a>
+</div>
+
 <!-- link to saved  yelp favorites-->
-<!-- add edit link here -->
 <!-- add delete account here -->

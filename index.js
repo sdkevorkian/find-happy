@@ -1,13 +1,14 @@
 require('dotenv').config();
 var express = require('express');
 var rowdy = require('rowdy-logger');
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('./config/passport-config');
 var methodOverride = require('method-override');
-var isLoggedIn = require('./middleware/isLoggedIn');
+// var isLoggedIn = require('./middleware/isLoggedIn');
 // may make separate controller for map page and use above middleware ?? may need it here
 
 var app = express();

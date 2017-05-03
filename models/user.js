@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             validate: {
                 len: {
-                    args: [6, 32],
+                    args: [6, 3000],
                     msg: "password must be between 6 and 32 characters long."
                 }
             }
@@ -41,6 +41,13 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         hooks: {
             beforeCreate: function(user, options, cb) {
+                if (user && user.password) {
+                    var hash = bcrypt.hashSync(user.password, 10);
+                    user.password = hash;
+                }
+                cb(null, user);
+            },
+            beforeUpdate: function(user, options, cb) {
                 if (user && user.password) {
                     var hash = bcrypt.hashSync(user.password, 10);
                     user.password = hash;

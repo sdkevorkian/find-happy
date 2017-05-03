@@ -1,6 +1,7 @@
 var express = require('express');
 var isLoggedIn = require('../middleware/isLoggedIn');
 var db = require('../models');
+var geocoder = require('geocoder');
 var router = express.Router();
 
 // Routes
@@ -23,7 +24,7 @@ router.get('/', isLoggedIn, function(req, res) {
     }).then(function(addresses) {
         res.render('addresses/list-all', { addresses: addresses });
     }).catch(function(error) {
-        res.status(400).render('main/error', { error: error });
+        res.status(400).render('error/error', { error: error });
     });
 });
 
@@ -44,7 +45,7 @@ router.get('/:id/edit', isLoggedIn, function(req, res) {
     }).then(function(address) {
         res.render('addresses/edit', { address: address });
     }).catch(function(error) {
-        res.render('main/error', { error: error });
+        res.render('error/error', { error: error });
     });
 
 });
@@ -92,17 +93,28 @@ router.post('/', isLoggedIn, function(req, res) {
 
 router.put('/:id', isLoggedIn, function(req, res) {
     var addressToFind = req.params.id;
-    db.address.update({
-        name: req.body.name,
-        address: req.body.address
-    }, {
-        where: {
-            id: addressToFind
-        }
-    }).spread(function(updatedCount) {
-        res.redirect(303, '/addresses');
-    }).catch(function(error) {
-        res.render('main/error', { error: error });
+    var newLat;
+    var newLong;
+    geocoder.geocode(req.body.address, function(err, data) {
+        if (err) console.log(err);
+        newLat = data.results[0].geometry.location.lat;
+        newLong = data.results[0].geometry.location.lng;
+
+        db.address.update({
+            name: req.body.name,
+            address: req.body.address,
+            lat: newLat,
+            long: newLong
+        }, {
+            where: {
+                id: addressToFind
+            }
+        }).spread(function(updatedCount) {
+
+            res.redirect(303, '/addresses');
+        }).catch(function(error) {
+            res.render('error/error', { error: error });
+        });
     });
 });
 

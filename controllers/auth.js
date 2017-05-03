@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('../config/passport-config');
 var isLoggedIn = require('../middleware/isLoggedIn');
 var db = require('../models');
+var bcrypt = require('bcrypt');
 var router = express.Router();
 
 // Routes
@@ -69,8 +70,30 @@ router.post('/signup', function(req, res, next) {
 */
 
 router.get('/profile', isLoggedIn, function(req, res) {
-    res.render('auth/profile');
+    var user = req.user;
+    res.render('auth/profile', { user: user });
 
+});
+
+router.get('/profile/:id/edit', isLoggedIn, function(req, res) {
+    var user = req.user;
+    res.render('auth/edit-profile', { user: user });
+});
+
+router.put('/profile/:id', isLoggedIn, function(req, res) {
+    var userToEdit = req.user.id;
+
+    db.user.findById(userToEdit).then(function(user) {
+        user.firstName = req.body.firstName;
+        user.birthdate = req.body.birthdate;
+        user.email = req.body.email;
+        user.password = req.body.password;
+        user.save().then(function() {
+            res.redirect(303, '/auth/profile');
+        }).catch(function(error) {
+            res.render('error/error', { error: error });
+        });
+    });
 });
 
 /*
