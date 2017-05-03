@@ -1,17 +1,30 @@
+ <form action="/addresses/<%=address.id%>" method="GET">
+
+    <p>
+          <input name="search" type="radio" id="happy-hour" value='happy hour'>
+          <label for="happy-hour">happy hour</label>
+    </p>
+    <p>
+          <input name="search" type="radio" id="dog-friendly" value='dog friendly'>
+          <label for="dog-friendly">dog friendly</label>
+    </p>
+    <p>
+          <input name="search" type="radio" id="live-music" value='live music'>
+          <label for="live-music">live music</label>
+    </p>
+        <input type="submit" value="search">
+    </form>
+
 <div id="map"></div>
 
-<!-- left off here
-https://wdi_sea.gitbooks.io/notes/content/05-express/additional-topics/express-geocode/readme.html
-https://github.com/sdkevorkian/express-geocode-maps-example/blob/master/views/index.ejs
-https://github.com/sdkevorkian/express-geocode-maps-example
 
- -->
 
 <!-- a few scripts -->
 
 <script>
   var address = <%- JSON.stringify(address) %>;
   var yelpSearch = <%-JSON.stringify(yelpSearch) %>;
+
 </script>
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLEMAPS_KEY %>&callback=initMap">

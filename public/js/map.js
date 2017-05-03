@@ -1,3 +1,6 @@
+// click handler that redirects using jquery ajax
+
+
 var map;
 
 var initMap = function() {
@@ -29,7 +32,7 @@ var initMap = function() {
 };
 
 
-//display all yelp search results, may want to make api call in this page?? separate out init map with populate map?
+//display all yelp search results
 var displayYelpResults = function(coordinates, name) {
     var resultMarker = new google.maps.Marker({
         position: { lat: coordinates.latitude, lng: coordinates.longitude },
@@ -53,7 +56,7 @@ $(function() {
     var businesses = yelpSearch.businesses;
     businesses.forEach(function(business) {
         displayYelpResults(business.coordinates, business.name);
-        console.log(business);
+
     });
 
 });

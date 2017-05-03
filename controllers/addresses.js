@@ -43,27 +43,19 @@ router.get('/:id', function(req, res) {
             id: req.params.id,
         }
     }).then(function(address) {
-        // may want to move api request to javascript script.js
         client.search({
-            term: 'happy hour',
+            term: `"${req.query.search}"`,
             latitude: address.lat,
             longitude: address.long,
             radius: 1610 // ~ a mile
         }).then(response => {
             results = response.jsonBody;
-            // console.log(results);
             res.render('addresses/map', { address: address, yelpSearch: results });
         }).catch(e => {
             res.render('error/error', { error: e });
-
         });
-
-        // }).catch(function(error) {
-        // });
-
     });
 });
-
 
 
 
