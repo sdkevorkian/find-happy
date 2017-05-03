@@ -8,8 +8,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('./config/passport-config');
 var methodOverride = require('method-override');
-// var isLoggedIn = require('./middleware/isLoggedIn');
-// may make separate controller for map page and use above middleware ?? may need it here
+var isLoggedIn = require('./middleware/isLoggedIn');
+
 var app = express();
 
 rowdy.begin(app);
@@ -57,9 +57,9 @@ app.get('/', function(req, res) {
 });
 
 // controllers
-app.use('/addresses', require('./controllers/addresses'));
+app.use('/addresses', isLoggedIn, require('./controllers/addresses'));
 app.use('/auth', require('./controllers/auth'));
-app.use('/map', require('./controllers/map'));
+
 
 app.listen(3000, function() {
     rowdy.print();

@@ -1,3 +1,5 @@
+
+<p><%=yelpSearch%></p>
 <div id="map"></div>
 
 <!-- left off here
@@ -9,7 +11,11 @@ https://github.com/sdkevorkian/express-geocode-maps-example
 
 <!-- a few scripts -->
 
-
+<script>
+  var address = <%- JSON.stringify(address) %>;
+  var yelpSearch = <%-JSON.stringify(yelpSearch) %>;
+</script>
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLEMAPS_KEY %>&callback=initMap">
 </script>
+<script src="/js/map.js"></script>

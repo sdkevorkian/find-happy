@@ -1,9 +1,10 @@
+require('dotenv').config();
+var yelp = require('yelp-fusion');
 var express = require('express');
-var isLoggedIn = require('../middleware/isLoggedIn');
 var db = require('../models');
 var geocoder = require('geocoder');
 var router = express.Router();
-
+var client = yelp.client(process.env.ACCESS_KEY);
 // Routes
 
 /*
@@ -13,7 +14,7 @@ var router = express.Router();
 */
 
 // put route for all addresses display here
-router.get('/', isLoggedIn, function(req, res) {
+router.get('/', function(req, res) {
     db.address.findAll({
         where: {
             userId: req.user.id,
@@ -29,13 +30,45 @@ router.get('/', isLoggedIn, function(req, res) {
 });
 
 // display new address form (route here after signup)
-router.get('/new', isLoggedIn, function(req, res) {
+router.get('/new', function(req, res) {
     var user = req.user;
     res.render('addresses/new', { user: user });
 });
 
+// get route for specific address (will display map with yelp data on that page)
+router.get('/:id', function(req, res) {
+    var results;
+    db.address.findOne({
+        where: {
+            id: req.params.id,
+        }
+    }).then(function(address) {
+        // may want to move api request to javascript script.js
+        client.search({
+            term: 'happy hour',
+            latitude: address.lat,
+            longitude: address.long,
+            radius: 1610 // ~ a mile
+        }).then(response => {
+            results = response.jsonBody;
+            // console.log(results);
+            res.render('addresses/map', { address: address, yelpSearch: results });
+        }).catch(e => {
+            res.render('error/error', { error: e });
+
+        });
+
+        // }).catch(function(error) {
+        // });
+
+    });
+});
+
+
+
+
 //display edit addresses form
-router.get('/:id/edit', isLoggedIn, function(req, res) {
+router.get('/:id/edit', function(req, res) {
     var addressToEdit = req.params.id;
 
     db.address.findOne({
@@ -58,7 +91,7 @@ router.get('/:id/edit', isLoggedIn, function(req, res) {
 */
 
 // add address to database
-router.post('/', isLoggedIn, function(req, res) {
+router.post('/', function(req, res) {
     var newUserId = req.user.id;
     var newName = req.body.name;
     var newAddress = req.body.address;
@@ -91,7 +124,7 @@ router.post('/', isLoggedIn, function(req, res) {
 
 */
 
-router.put('/:id', isLoggedIn, function(req, res) {
+router.put('/:id', function(req, res) {
     var addressToFind = req.params.id;
     var newLat;
     var newLong;
@@ -124,7 +157,7 @@ router.put('/:id', isLoggedIn, function(req, res) {
 
 */
 
-router.delete('/:id', isLoggedIn, function(req, res) {
+router.delete('/:id', function(req, res) {
     var addressToDelete = req.params.id;
 
     db.address.destroy({
