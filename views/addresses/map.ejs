@@ -1,6 +1,6 @@
 <div class="row map-container">
-    <div id="map" class="col s6"></div>
-    <div class="col s6">
+    <div id="map" class="col s6 left"></div>
+    <div class="col s6 right center-align">
          <form action="/addresses/<%=address.id%>" method="GET">
             <p>
                   <input name="search" type="radio" id="happy-hour" value='happy hour'>
@@ -24,7 +24,10 @@
             </p>
                 <input type="submit" value="search">
             </form>
+            <div id="display-yelp-result">
+            </div>
         </div>
+
     </div>
 <!-- a few scripts -->
 

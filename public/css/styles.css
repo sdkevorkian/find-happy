@@ -1,3 +1,7 @@
+/*
+    ORGANIZATIONAL
+*/
+
 body {
     font-size: 16px;
     margin: 0;
@@ -21,10 +25,19 @@ footer a {
     color: #FFF;
 }
 
+
+/*
+    MAP PAGE
+*/
+
 #map {
     height: 80vh;
 }
 
 .map-container {
     margin: 0;
+}
+
+#display-yelp-result img {
+    max-height: 20vh;
 }

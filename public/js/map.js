@@ -33,10 +33,11 @@ var initMap = function() {
 
 
 //display all yelp search results
-var displayYelpResults = function(coordinates, name) {
+var displayYelpResults = function(business) {
+
     var resultMarker = new google.maps.Marker({
-        position: { lat: coordinates.latitude, lng: coordinates.longitude },
-        title: name,
+        position: { lat: business.coordinates.latitude, lng: business.coordinates.longitude },
+        title: business.name,
         map: map,
         icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
 
@@ -44,9 +45,20 @@ var displayYelpResults = function(coordinates, name) {
 
     resultMarker.addListener('click', function() {
         var infoWindow = new google.maps.InfoWindow({
-            content: '<h3>' + name + '</h3>'
+            content: '<h3>' + business.name + '</h3>'
         });
         infoWindow.open(map, resultMarker);
+        var html = `
+        <img src="${business.image_url}">
+        <p>${business.display_phone}</p>
+        <p>${Math.round(business.distance)}m away</p>
+        <p>${business.price}</p>
+        <p>${business.rating}/5</p>
+        <p><a href="${business.url} target="_blank">view on yelp</a></p>`;
+
+
+        $('#display-yelp-result').html(html);
+
     });
 };
 
@@ -55,7 +67,7 @@ var displayYelpResults = function(coordinates, name) {
 $(function() {
     var businesses = yelpSearch.businesses;
     businesses.forEach(function(business) {
-        displayYelpResults(business.coordinates, business.name);
+        displayYelpResults(business);
 
     });
 
