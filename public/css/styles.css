@@ -33,6 +33,14 @@ footer a {
         GENERAL STYLES
 */
 
+h1 {
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
 .title-case {
     text-transform: capitalize;
 }
@@ -52,4 +60,12 @@ footer a {
 
 #display-yelp-result img {
     max-height: 20vh;
+}
+
+.display-photos img {
+    max-height: 15em;
+}
+
+.display-address {
+    margin: 0;
 }

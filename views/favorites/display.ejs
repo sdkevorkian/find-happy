@@ -1,0 +1,28 @@
+<div class="container center-align">
+
+    <h1><%=name%></h1>
+    <p><%=price%></p>
+    <p><%=rating%>/5</p>
+    <p><%=phone%></p>
+
+
+    <div class="display-photos">
+        <%photos.forEach(function(img) { %>
+
+            <img src = "<%=img%>">
+
+        <% })%>
+    </div>
+
+
+    <%if (hours[0]["is_open_now"]){%>
+        <p>currently open!!</p>
+    <%}%>
+
+    <div >
+        <%location.display_address.forEach(function(line){%>
+            <p class="display_address"> <%=line%> </p>
+
+        <%})%>
+    </div>
+</div>

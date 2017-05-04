@@ -49,6 +49,7 @@ var displayYelpResults = function(business) {
         });
         infoWindow.open(map, resultMarker);
         var html = `
+        <h3>${business.name}</h3>
         <img src="${business.image_url}">
         <p>${business.display_phone}</p>
         <p>${Math.round(business.distance)}m away</p>

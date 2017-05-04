@@ -135,7 +135,6 @@ router.put('/:id', function(req, res) {
                 id: addressToFind
             }
         }).spread(function(updatedCount) {
-
             res.redirect(303, '/addresses');
         }).catch(function(error) {
             res.render('error/error', { error: error });
