@@ -3,16 +3,19 @@
 */
 
 body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     font-size: 16px;
     margin: 0;
 }
 
-header {
-    height: 10vh;
+main {
+    flex: 1 0 auto;
 }
 
-main {
-    height: 85vh;
+header {
+    height: 10vh;
 }
 
 footer {
@@ -23,6 +26,15 @@ footer {
 
 footer a {
     color: #FFF;
+}
+
+
+/*
+        GENERAL STYLES
+*/
+
+.title-case {
+    text-transform: capitalize;
 }
 
 

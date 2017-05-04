@@ -58,6 +58,7 @@ app.get('/', function(req, res) {
 
 // controllers
 app.use('/addresses', isLoggedIn, require('./controllers/addresses'));
+app.use('/favorites', isLoggedIn, require('./controllers/favorites'));
 app.use('/auth', require('./controllers/auth'));
 
 

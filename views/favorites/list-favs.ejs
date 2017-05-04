@@ -1,0 +1,12 @@
+<div class="container center-align">
+    <h1><%=currentUser.firstName%>'s Favorites</h1>
+
+    <%favorites.forEach(function(favorite){%>
+          <p class="title-case">
+
+          <a href="/favorites/<%=favorite.id%>"><%=favorite.yelpId.replace(/-/g, ' ');%></a>
+
+          </p>
+
+    <%})%>
+</div>

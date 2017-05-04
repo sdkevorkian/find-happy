@@ -54,7 +54,11 @@ var displayYelpResults = function(business) {
         <p>${Math.round(business.distance)}m away</p>
         <p>${business.price}</p>
         <p>${business.rating}/5</p>
-        <p><a href="${business.url} target="_blank">view on yelp</a></p>`;
+        <p><a href="${business.url} target="_blank">view on yelp</a></p>
+        <form method="POST" action="/favorites">
+        <input type="hidden" value="${business.id}" name="yelpId">
+        <input type="submit" value="add to favorites">
+        </form> `;
 
 
         $('#display-yelp-result').html(html);
