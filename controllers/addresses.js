@@ -44,7 +44,7 @@ router.get('/:id', function(req, res) {
         }
     }).then(function(address) {
         client.search({
-            term: `"${req.query.search}"`,
+            term: req.query.search,
             latitude: address.lat,
             longitude: address.long,
             radius: 1610 // ~ a mile

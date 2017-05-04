@@ -1,24 +1,31 @@
- <form action="/addresses/<%=address.id%>" method="GET">
-
-    <p>
-          <input name="search" type="radio" id="happy-hour" value='happy hour'>
-          <label for="happy-hour">happy hour</label>
-    </p>
-    <p>
-          <input name="search" type="radio" id="dog-friendly" value='dog friendly'>
-          <label for="dog-friendly">dog friendly</label>
-    </p>
-    <p>
-          <input name="search" type="radio" id="live-music" value='live music'>
-          <label for="live-music">live music</label>
-    </p>
-        <input type="submit" value="search">
-    </form>
-
-<div id="map"></div>
-
-
-
+<div class="row map-container">
+    <div id="map" class="col s6"></div>
+    <div class="col s6">
+         <form action="/addresses/<%=address.id%>" method="GET">
+            <p>
+                  <input name="search" type="radio" id="happy-hour" value='happy hour'>
+                  <label for="happy-hour">happy hour</label>
+            </p>
+            <p>
+                  <input name="search" type="radio" id="dog-friendly" value='dog friendly'>
+                  <label for="dog-friendly">dog friendly</label>
+            </p>
+            <p>
+                  <input name="search" type="radio" id="live-music" value='live music'>
+                  <label for="live-music">live music</label>
+            </p>
+            <p>
+                  <input name="search" type="radio" id="trivia-night" value='trivia night'>
+                  <label for="trivia-night">trivia night</label>
+            </p>
+            <p>
+                  <input name="search" type="radio" id="walking-trails" value='walking trails'>
+                  <label for="walking-trails">walking trails</label>
+            </p>
+                <input type="submit" value="search">
+            </form>
+        </div>
+    </div>
 <!-- a few scripts -->
 
 <script>
