@@ -36,10 +36,11 @@ router.post('/', function(req, res) {
             .then(function(user) {
                 user.addFavorite(favorite)
                     .then(function(favorite) {
-                        // add flash message here, if favorite you added it! if not, it was already there
-                        req.flash("you've added this already", error.message);
+                        // add below flash message, if favorite you added it! if not, it was already there... need to read documentation better
+                        // req.flash("you've added this already", error.message);
                         res.redirect('back');
                     }).catch(function(err) {
+                        console.log(err)
                         res.render('error/error', { error: err });
                     });
             });
@@ -49,16 +50,29 @@ router.post('/', function(req, res) {
 
 // display details about this location
 router.get('/:id', function(req, res) {
-    db.favorite.findById(req.params.id)
-        .then(function(favorite) {
-            client.business(favorite.yelpId)
-                .then(function(response) {
-                    res.render('favorites/display', response.jsonBody);
-                }).catch(function(err) {
-                    res.render('error/error', { error: err });
-                });
-        });
-    //find yelp id by database, then with the results do business search to show details
+    var numFavorited;
+
+    db.userFavorites.findAndCountAll({
+        where: {
+            favoriteId: req.params.id,
+        }
+    }).then(function(result) {
+        numFavorited = result.count;
+        db.favorite.findById(req.params.id)
+            .then(function(favorite) {
+                client.business(favorite.yelpId)
+                    .then(function(response) {
+
+                        res.render('favorites/display', { favorite: response.jsonBody, numFavorited: numFavorited });
+                    }).catch(function(err) {
+                        res.render('error/error', { error: err });
+                    });
+            });
+
+    });
+
+
+
 });
 
 // delete ONLY from userFavorites table where favoritesId = req.params.id and userId = req.user.id

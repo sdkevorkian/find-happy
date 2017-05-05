@@ -105,7 +105,8 @@ router.put('/profile/:id', isLoggedIn, function(req, res) {
 router.get('/logout', function(req, res) {
     req.logout();
     // add name below
-    req.flash('success', 'you logged out! see you later');
+    // req.flash('success', 'you logged out! see you later');
+
     res.redirect('/');
 });
 

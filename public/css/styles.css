@@ -79,6 +79,7 @@ footer a {
 
 h1 {
     font-size: 5em;
+    color: #243E43;
     font-family: Reckless;
 }
 
@@ -97,12 +98,12 @@ h3 {
 
 .landing-title {
     font-size: 10em;
+    color: white;
 }
 
 .landing-page {
     background-image: url('../img/bar-scene.jpg');
     background-size: cover;
-    color: white;
 }
 
 
@@ -127,7 +128,16 @@ h3 {
 }
 
 #dropdown1 a {
-    color: #ef9a9a;
+    color: #FE827A;
+}
+
+
+/*
+    FORMS
+*/
+
+.input-field .prefix.active {
+    color: #FE827A;
 }
 
 

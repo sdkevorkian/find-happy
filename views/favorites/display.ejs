@@ -1,13 +1,18 @@
 <section class="container center-align">
 
-    <h1><%=name%></h1>
-    <p><%=price%></p>
-    <p><%=rating%>/5</p>
-    <p><%=phone%></p>
+    <h1><%=favorite.name%></h1>
+
+    <%if (numFavorited > 1) {%>
+    <p><%=numFavorited%> users love this place!</p>
+    <%}%>
+
+    <p><%=favorite.price%></p>
+    <p><%=favorite.rating%>/5</p>
+    <p><%=favorite.phone%></p>
 
 
     <div class="display-photos">
-        <%photos.forEach(function(img) { %>
+        <%favorite.photos.forEach(function(img) { %>
 
             <img src = "<%=img%>">
 
@@ -15,12 +20,12 @@
     </div>
 
 
-    <%if (hours[0]["is_open_now"]){%>
+    <%if (favorite.hours[0]["is_open_now"]){%>
         <p>currently open!!</p>
     <%}%>
 
     <div >
-        <%location.display_address.forEach(function(line){%>
+        <%favorite.location.display_address.forEach(function(line){%>
             <p class="display_address"> <%=line%> </p>
 
         <%})%>
