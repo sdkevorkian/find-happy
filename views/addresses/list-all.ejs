@@ -1,18 +1,24 @@
-<section class="container center-align">
+<section class="list-addresses-page center-align">
+    <div class="container">
 
-    <h1>Your Addresses</h1>
+        <h1>Your Addresses</h1>
+        <div class="row">
+        <%addresses.forEach(function(address){%>
 
-    <%addresses.forEach(function(address){%>
+                <div class="card-panel col m5 offset-m1 s12">
+                    <div class="card-content">
+                          <span class="card-title"><%=address.name%></span>
+                          <p><%=address.address%></p>
+                          <p><a href="/addresses/<%=address.id %>/edit"><i class="tiny material-icons">create</i></a><a href="/addresses/<%=address.id %>?_method=DELETE"><i class="tiny material-icons">clear</i></a></p>
 
-            <p>
-                  <%=address.name%>:
-                  <%=address.address%>
-                  <a href="/addresses/<%=address.id %>/edit"><i class="tiny material-icons">create</i></a>
-                  <a href="/addresses/<%=address.id %>?_method=DELETE"><i class="tiny material-icons">clear</i></a></p>
-                  <p><a class="waves-effect waves-light btn" href="/addresses/<%=address.id %>"><i class="material-icons right">map</i>find happy around this address</a></p>
-            </p>
+                      </div>
+                          <a class="waves-effect waves-light btn teal lighten-3" href="/addresses/<%=address.id %>"><i class="material-icons right">map</i>find happy</a>
 
-    <%})%>
+                </div>
 
-    <a class="waves-effect waves-light btn-large" href="/addresses/new">ADD ANOTHER</a>
+        <%})%>
+        </div>
+
+        <a class="waves-effect waves-light btn-large teal lighten-3" href="/addresses/new">ADD ANOTHER</a>
+    </div>
 </section>

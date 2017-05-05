@@ -1,33 +1,32 @@
-<section class="container center-align">
+<section class="display-favorite-page center-align">
+        <div class="container">
+            <h1><%=favorite.name%></h1>
 
-    <h1><%=favorite.name%></h1>
+            <%if (numFavorited > 1) {%>
+            <p><%=numFavorited%> users love this place!</p>
+            <%}%>
 
-    <%if (numFavorited > 1) {%>
-    <p><%=numFavorited%> users love this place!</p>
-    <%}%>
-
-    <p><%=favorite.price%></p>
-    <p><%=favorite.rating%>/5</p>
-    <p><%=favorite.phone%></p>
-
-
-    <div class="display-photos">
-        <%favorite.photos.forEach(function(img) { %>
-
-            <img src = "<%=img%>">
-
-        <% })%>
-    </div>
+            <p><%=favorite.price%></p>
+            <p><%=favorite.rating%>/5</p>
+            <p><%=favorite.phone%></p>
 
 
-    <%if (favorite.hours[0]["is_open_now"]){%>
-        <p>currently open!!</p>
-    <%}%>
+            <div class="display-photos">
 
-    <div >
-        <%favorite.location.display_address.forEach(function(line){%>
-            <p class="display_address"> <%=line%> </p>
+                    <img src = "<%=favorite.photos[0]%>">
 
-        <%})%>
+            </div>
+
+
+            <%if (favorite.hours[0]["is_open_now"]){%>
+                <p>currently open!!</p>
+            <%}%>
+
+            <div >
+                <%favorite.location.display_address.forEach(function(line){%>
+                    <p class="display_address"> <%=line%> </p>
+
+                <%})%>
+            </div>
     </div>
 </section>

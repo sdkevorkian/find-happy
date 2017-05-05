@@ -1,10 +1,15 @@
-<section class="container center-align">
+<section class="profile-page">
 
-    <h1>Welcome, <%=currentUser.firstName%></h1>
+    <div class="container center-align">
 
-    <a class="waves-effect waves-light btn-large" href="/addresses">VIEW ADDRESSES</a>
-    <a class="waves-effect waves-light btn-large" href="/favorites">VIEW FAVORITES</a>
-    <a class="waves-effect waves-light btn-large" href="/auth/profile/<%=user.id%>/edit">EDIT PROFILE</a>
+        <h1>Welcome, <%=currentUser.firstName%></h1>
+
+        <a class="waves-effect waves-light btn-large teal lighten-3" href="/addresses">VIEW ADDRESSES</a>
+        <a class="waves-effect waves-light btn-large teal lighten-3" href="/favorites">VIEW FAVORITES</a>
+        <a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/profile/<%=user.id%>/edit">EDIT PROFILE</a>
+
+    </div>
+
 </section>
 
 <!-- link to saved  yelp favorites-->

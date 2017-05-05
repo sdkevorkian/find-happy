@@ -3,8 +3,8 @@ and pick some close ones from materialize
 dark: #243E43;
 faded teal: #648186;
 bold blue: #018EA8;
-light blue: #85D1CF;
-pink: #FE827A;
+light blue: #85D1CF;#80cbc4 teal lighten-3
+pink: #FE827A;#ff8a80   red accent-1
 */
 
 
@@ -29,22 +29,19 @@ pink: #FE827A;
 
 body {
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
     font-size: 16px;
     font-family: Ikaros;
     margin: 0;
     padding: 0;
+    color: white;
     background-color: #ffcdd2;
-}
-
-main {
-    flex: 1 0 auto;
-    min-height: 90vh;
+    width: 100%;
 }
 
 section {
     padding-top: 2em;
+    width: 100%;
 }
 
 header {
@@ -67,19 +64,13 @@ footer a {
         GENERAL STYLES
 */
 
-.main,
 .flash-alerts {
     margin-bottom: 0;
 }
 
-.main {
-    min-height: 95vh;
-    width: 100%;
-}
-
 h1 {
-    font-size: 5em;
-    color: #243E43;
+    font-size: 7em;
+    color: white;
     font-family: Reckless;
 }
 
@@ -93,17 +84,76 @@ h3 {
 
 
 /*
-    LANDING PAGE
+    BUTTONS
 */
 
-.landing-title {
-    font-size: 10em;
+.btn,
+.btn-large {
+    margin: 1em;
+}
+
+
+/*
+    CARDS
+*/
+
+.card-panel {
+    background-color: rgba(254, 130, 122, 0.85);
+    border-radius: 5%;
+}
+
+.card-content,
+.card-content p {
+    margin-top: 0.75em;
+}
+
+.card-title {
+    font-size: 1.5em;
+}
+
+.card-panel i {
+    color: #018EA8;
+}
+
+
+/*
+    FORMS
+*/
+
+form,
+.input-field label {
     color: white;
 }
 
-.landing-page {
-    background-image: url('../img/bar-scene.jpg');
-    background-size: cover;
+.input-field label:not(.label-icon).active {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #85D1CF inset !important;
+}
+
+
+/*
+    COLLECTIONS
+*/
+
+.collection {
+    border: 1px solid #018EA8;
+}
+
+.collection .collection-item {
+    background-color: rgba(0, 0, 0, 0.25);
+    border: none;
+}
+
+.collection a {
+    color: #018EA8;
+}
+
+.collection .collection-item:hover {
+    background-color: rgba(133, 209, 207, 0.25);
 }
 
 
@@ -133,21 +183,155 @@ h3 {
 
 
 /*
-    FORMS
-*/
-
-.input-field .prefix.active {
-    color: #FE827A;
-}
-
-
-/*
     FOOTER
 */
 
 footer p {
     margin-left: auto;
     margin-right: auto;
+}
+
+footer a {
+    color: #243E43;
+}
+
+
+/*
+    BACKROUND IMGS ALL
+*/
+
+.landing-page,
+.login-page,
+.signup-page,
+.profile-page,
+.edit-profile-page,
+.list-addresses-page,
+.new-address-page,
+.edit-address-page,
+.favorites-page,
+.display-favorite-page {
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+/*
+86.5vh looks better with header
+95vh looks better without
+*/
+
+
+/*
+    LANDING PAGE
+*/
+
+.landing-title {
+    font-size: 15em;
+    color: white;
+}
+
+.landing-page {
+    background-image: url('../img/bar-scene.jpg');
+    min-height: 95vh;
+}
+
+
+/*
+    LOG IN PAGE
+*/
+
+.login-page {
+    background-image: url('../img/road-trippin.jpg');
+    min-height: 95vh;
+}
+
+
+/*
+    SIGN UP PAGE
+*/
+
+.signup-page {
+    background-image: url('../img/snapshot.jpg');
+    min-height: 95vh;
+}
+
+
+/*
+    PROFILE PAGE
+*/
+
+.profile-page {
+    background-image: url('../img/motel.jpg');
+    min-height: 86.5vh;
+}
+
+
+/*
+    EDIT PROFILE PAGE
+*/
+
+.edit-profile-page {
+    background-image: url('../img/shiny-shoes.jpg');
+    min-height: 86.5vh;
+}
+
+
+/*
+    LIST ADDRESSES PAGE
+*/
+
+.list-addresses-page {
+    background-image: url('../img/elvis.jpg');
+    min-height: 86.5vh;
+}
+
+
+/*
+    NEW ADDRESS PAGE
+*/
+
+.new-address-page {
+    background-image: url('../img/coffee-shop.jpg');
+    min-height: 86.5vh;
+}
+
+.new-address-page form {
+    background-color: rgba(254, 130, 122, 0.85);
+    padding: 1em;
+}
+
+.new-address-page form>.row {
+    padding-top: 1em;
+}
+
+
+/*
+    EDIT-ADDRESS PAGE
+*/
+
+.edit-address-page {
+    background-image: url('../img/hiking-boots.jpg');
+    min-height: 86.5vh;
+}
+
+
+/*
+    FAVORITES
+*/
+
+.favorites-page {
+    background-image: url('../img/lake-party.jpg');
+    min-height: 86.5vh;
+}
+
+
+/*
+    DISPLAY FAVORITE PAGE
+*/
+
+.display-favorite-page {
+    background-image: url('../img/bonfire.jpg');
+    min-height: 86.5vh;
 }
 
 
@@ -168,6 +352,8 @@ footer p {
     margin: 0;
     background-image: url('../img/raise-your-glass.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #display-yelp-result img {
@@ -180,4 +366,15 @@ footer p {
 
 .display-address {
     margin: 0;
+}
+
+
+/*
+    MEDIA QUERIES
+*/
+
+@media only screen and (max-width: 992px) {
+    nav .brand-logo {
+        left: 20%;
+    }
 }

@@ -1,37 +1,37 @@
-<section class="container center-align">
+<section class="edit-profile-page">
+    <div class="container center-align">
+        <h1>Edit your profile</h1>
 
-    <h1>Edit your profile</h1>
+        <div class="row">
+        <form class="col s12" method="POST" action="/auth/profile/<%=user.id%>?_method=PUT">
+          <div class="row">
+            <div class="input-field col s6">
+              <input  name='firstName' placeholder="first name" id="firstName" type="text" class="validate" value="<%=user.firstName%>">
+              <label for="firstName" class="active">First Name</label>
+            </div>
+            <div class="input-field col s6">
 
-    <div class="row">
-    <form class="col s12" method="POST" action="/auth/profile/<%=user.id%>?_method=PUT">
-      <div class="row">
-        <div class="input-field col s6">
-          <input  name='firstName' placeholder="first name" id="firstName" type="text" class="validate" value="<%=user.firstName%>">
-          <label for="firstName" class="active">First Name</label>
-        </div>
-        <div class="input-field col s6">
+              <input name= "birthdate" id="birthdate" type="date" class="validate">
+              <label for="birthdate" class="active">Birthdate</label>
+            </div>
+          </div>
 
-          <input name= "birthdate" id="birthdate" type="date" class="validate">
-          <label for="birthdate" class="active">Birthdate</label>
-        </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="email" id="email" type="email" class="validate" value ="<%=user.email%>">
+              <label for="email" class="active">Email(this will be your username)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="password" id="password" type="password" class="validate">
+              <label for="password" class="active">Password</label>
+            </div>
+          </div>
+            <button class="btn waves-effect waves-light teal lighten-3" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+        </form>
       </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="email" id="email" type="email" class="validate" value ="<%=user.email%>">
-          <label for="email" class="active">Email(this will be your username)</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input name="password" id="password" type="password" class="validate">
-          <label for="password" class="active">Password</label>
-        </div>
-      </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
-    </form>
-  </div>
-
+    </div>
 </section>

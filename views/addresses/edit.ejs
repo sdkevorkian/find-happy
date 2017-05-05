@@ -1,24 +1,25 @@
-<section class="container center-align">
+<section class="edit-address-page center-align">
+    <div class="container">
+        <h1>Edit Address</h1>
 
-    <h1>Edit Address</h1>
-
-    <div class="row">
-        <form class="col s12" method="POST" action='/addresses/<%=address.id %>?_method=PUT'>
-            <div class="row">
-              <div class="input-field col s6">
-                  <input type="text" name="name" placeholder="name for address" class="validate" value='<%=address.name%>'>
-                  <label for="name" class="active">Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s10">
-                  <input type="text" name="address" placeholder="address" class="validate" value='<%=address.address%>'>
-                  <label for="address" class="active">Address</label>
-              </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">EDIT
-                <i class="material-icons right">send</i>
-             </button>
-        </form>
+        <div class="row">
+            <form class="col s12" method="POST" action='/addresses/<%=address.id %>?_method=PUT'>
+                <div class="row">
+                  <div class="input-field col s6">
+                      <input type="text" name="name" placeholder="name for address" class="validate" value='<%=address.name%>'>
+                      <label for="name" class="active">Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s10">
+                      <input type="text" name="address" placeholder="address" class="validate" value='<%=address.address%>'>
+                      <label for="address" class="active">Address</label>
+                  </div>
+                </div>
+                <button class="btn waves-effect waves-light teal lighten-3" type="submit" name="action">EDIT
+                    <i class="material-icons right">send</i>
+                 </button>
+            </form>
+        </div>
     </div>
 </section>
