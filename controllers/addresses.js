@@ -37,6 +37,11 @@ router.get('/new', function(req, res) {
 
 // get route for specific address (will display map with yelp data on that page)
 router.get('/:id', function(req, res) {
+    var searchTerms = req.query.search
+    if (!searchTerms) {
+        searchTerms = "happy hour";
+    }
+
     var results;
     db.address.findOne({
         where: {
@@ -44,7 +49,7 @@ router.get('/:id', function(req, res) {
         }
     }).then(function(address) {
         client.search({
-            term: req.query.search,
+            term: searchTerms,
             latitude: address.lat,
             longitude: address.long,
             radius: 1610 // ~ a mile

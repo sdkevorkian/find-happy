@@ -1,6 +1,6 @@
 <div class="row map-container">
-    <div id="map" class="col s6 left"></div>
-    <div class="col s6 right center-align">
+    <div id="map" class="col m6 s12 left"></div>
+    <div class="col m6 s12 address-right center-align">
          <form action="/addresses/<%=address.id%>" method="GET">
             <p>
                   <input name="search" type="radio" id="happy-hour" value='happy hour'>
@@ -21,6 +21,10 @@
             <p>
                   <input name="search" type="radio" id="walking-trails" value='walking trails'>
                   <label for="walking-trails">walking trails</label>
+            </p>
+            <p>
+                  <input name="search" type="radio" id="karaoke" value='karaoke'>
+                  <label for="karaoke">karaoke</label>
             </p>
                 <input type="submit" value="search">
             </form>
