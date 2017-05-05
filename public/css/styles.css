@@ -1,3 +1,13 @@
+/*may want to use these colors: http://www.pictaculous.com/
+and pick some close ones from materialize
+dark: #243E43;
+faded teal: #648186;
+bold blue: #018EA8;
+light blue: #85D1CF;
+pink: #FE827A;
+*/
+
+
 /*
     DEFINITIONS
 */
@@ -31,6 +41,10 @@ body {
 main {
     flex: 1 0 auto;
     min-height: 90vh;
+}
+
+section {
+    padding-top: 2em;
 }
 
 header {
