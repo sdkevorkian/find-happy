@@ -9,7 +9,7 @@ var initMap = function() {
     var addressCoords = { lat: address.lat, lng: address.long };
     map = new google.maps.Map(document.getElementById('map'), {
         center: addressCoords,
-        zoom: 15
+        zoom: 13
     });
 
 
@@ -45,20 +45,19 @@ var displayYelpResults = function(business) {
 
     resultMarker.addListener('click', function() {
         var infoWindow = new google.maps.InfoWindow({
-            content: '<h3>' + business.name + '</h3>'
+            content: '<h4>' + business.name + '</h4>'
         });
         infoWindow.open(map, resultMarker);
         var html = `
         <h3>${business.name}</h3>
         <img src="${business.image_url}">
         <p>${business.display_phone}</p>
-        <p>${Math.round(business.distance)}m away</p>
-        <p>${business.price}</p>
+        <p>${(business.distance/1609).toFixed(1)}mi away</p>
         <p>${business.rating}/5</p>
-        <p><a href="${business.url} target="_blank">view on yelp</a></p>
+        <p><a href="${business.url}" target="_blank">view on yelp</a></p>
         <form method="POST" action="/favorites">
         <input type="hidden" value="${business.id}" name="yelpId">
-        <input type="submit" value="add to favorites">
+        <input class="btn teal lighten-3 waves-effect waves-light" type="submit" value="add to favorites">
         </form> `;
 
 

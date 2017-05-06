@@ -1,7 +1,7 @@
 <div class="row map-container">
-    <div id="map" class="col m6 s12 left"></div>
-    <div class="col m6 s12 address-right center-align">
-         <form action="/addresses/<%=address.id%>" method="GET">
+    <div class="col m6 s12 address-left center-align">
+        <div class="height-giver">
+         <form class="search-options" action="/addresses/<%=address.id%>" method="GET">
             <p>
                   <input name="search" type="radio" id="happy-hour" value='happy hour'>
                   <label for="happy-hour">happy hour</label>
@@ -26,14 +26,30 @@
                   <input name="search" type="radio" id="karaoke" value='karaoke'>
                   <label for="karaoke">karaoke</label>
             </p>
-                <input type="submit" value="search">
+             <p>
+                  <input name="search" type="radio" id="ice-cream" value='ice cream'>
+                  <label for="ice-cream">ice cream</label>
+            </p>
+            <p>
+                  <input name="search" type="radio" id="coffee" value='coffee'>
+                  <label for="coffee">coffee</label>
+            </p>
+            <div class="row">
+                <p class="other col s10 offset-s1 m4 offset-m2">
+                      <label for="other">other:</label><input type="text" name="otherSearch" id="other-search">
+                </p>
+                <input class="btn teal lighten-3 waves-effect waves-light" type="submit" value="search">
+                </div>
             </form>
             <div id="display-yelp-result">
 
             </div>
-        </div>
+            </div>
+            </div>
+    <div id="map" class="col m6 s12 left"></div>
 
-    </div>
+</div>
+
 <!-- a few scripts -->
 
 <script>

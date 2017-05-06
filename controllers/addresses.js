@@ -37,7 +37,12 @@ router.get('/new', function(req, res) {
 
 // get route for specific address (will display map with yelp data on that page)
 router.get('/:id', function(req, res) {
-    var searchTerms = req.query.search
+    var searchTerms;
+    if (req.query.otherSearch) {
+        searchTerms = req.query.otherSearch;
+    } else {
+        searchTerms = req.query.search;
+    }
     if (!searchTerms) {
         searchTerms = "happy hour";
     }
