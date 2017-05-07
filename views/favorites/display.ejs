@@ -1,32 +1,41 @@
 <section class="display-favorite-page center-align">
         <div class="container">
             <h1><%=favorite.name%></h1>
-
+            <div class="display valign-wrapper">
             <%if (numFavorited > 1) {%>
-            <p><%=numFavorited%> users love this place!</p>
+            <h4 class="num-favorited"><%=numFavorited%> users love this place!</h4>
             <%}%>
+                <img src = "<%=favorite.image_url%>">
 
-            <p><%=favorite.price%></p>
-            <p><%=favorite.rating%>/5</p>
-            <p><%=favorite.phone%></p>
+                <div class="display-address">
+                    <%favorite.location.display_address.forEach(function(line){%>
+                        <p > <%=line%> </p>
+                    <%})%>
+                    <p><%=favorite.phone%></p>
+                </div>
+                <div>
+                        <p>rating:</p>
+                        <p><%=favorite.rating%>/5</p>
+                </div>
+                <p><%=favorite.price%></p>
 
 
-            <div class="display-photos">
+                <%if (favorite.hours[0]["is_open_now"]){%>
+                    <p>currently open!!</p>
+                <%} else { %>
+                    <p>currently closed</p>
+                    <%}%>
 
-                    <img src = "<%=favorite.photos[0]%>">
-
+                    <div class="display-hours-open">
+                        <%hoursOpen.forEach(function(day){%>
+                        <div class="day-display">
+                        <p><%=day.day%></p>
+                        <p><%=day.start%><p>
+                        <p><%=day.end%></p>
+                        </div>
+                        <%})%>
+                    </div>
             </div>
-
-
-            <%if (favorite.hours[0]["is_open_now"]){%>
-                <p>currently open!!</p>
-            <%}%>
-
-            <div >
-                <%favorite.location.display_address.forEach(function(line){%>
-                    <p class="display_address"> <%=line%> </p>
-
-                <%})%>
-            </div>
+                    <a class="waves-effect waves-light btn-large teal lighten-3" href="/favorites">back to favorites</a>
     </div>
 </section>

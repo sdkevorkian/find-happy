@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
                         // req.flash("you've added this already", error.message);
                         res.redirect('back');
                     }).catch(function(err) {
-                        console.log(err)
+                        console.log(err);
                         res.render('error/error', { error: err });
                     });
             });
@@ -62,8 +62,13 @@ router.get('/:id', function(req, res) {
             .then(function(favorite) {
                 client.business(favorite.yelpId)
                     .then(function(response) {
+                        var hoursOpen = response.jsonBody.hours[0].open;
+                        var hoursOpenArray = [];
+                        hoursOpen.forEach(function(day) {
+                            hoursOpenArray.push(convertTime(day.start, day.end, day.day));
+                        });
 
-                        res.render('favorites/display', { favorite: response.jsonBody, numFavorited: numFavorited });
+                        res.render('favorites/display', { favorite: response.jsonBody, numFavorited: numFavorited, hoursOpen: hoursOpenArray });
                     }).catch(function(err) {
                         res.render('error/error', { error: err });
                     });
@@ -91,6 +96,52 @@ router.delete('/:id', function(req, res) {
 });
 
 
+function convertTime(start, end, day) {
+    var newDayObj = {};
+    switch (day) {
+        case 0:
+            day = "M";
+            break;
+        case 1:
+            day = "Tu";
+            break;
+        case 2:
+            day = "W";
+            break;
+        case 3:
+            day = "Th";
+            break;
+        case 4:
+            day = "F";
+            break;
+        case 5:
+            day = "Sa";
+            break;
+        case 6:
+            day = "Su";
+            break;
+    }
+    start = militaryToAmPm(start);
+    end = militaryToAmPm(end);
+
+    newDayObj.day = day;
+    newDayObj.start = start;
+    newDayObj.end = end;
+
+    return newDayObj;
+
+}
+
+function militaryToAmPm(hour) {
+    var newTime;
+    if (hour > 1200) {
+        hour = hour - 1200;
+        newTime = hour + "PM";
+    } else {
+        newTime = hour + "AM";
+    }
+    return newTime;
+}
 
 // Exports object
 module.exports = router;

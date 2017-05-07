@@ -106,6 +106,10 @@ h4 {
     margin: 1em;
 }
 
+.dropdown-button {
+    margin: initial;
+}
+
 
 /*
     CARDS
@@ -129,6 +133,10 @@ h4 {
     color: #018EA8;
 }
 
+.btn i {
+    margin: 0 0.25em;
+}
+
 
 /*
     FORMS
@@ -146,28 +154,6 @@ form,
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #85D1CF inset !important;
-}
-
-
-/*
-    COLLECTIONS
-*/
-
-.collection {
-    border: 1px solid #018EA8;
-}
-
-.collection .collection-item {
-    background-color: rgba(0, 0, 0, 0.25);
-    border: none;
-}
-
-.collection a {
-    color: #018EA8;
-}
-
-.collection .collection-item:hover {
-    background-color: rgba(133, 209, 207, 0.25);
 }
 
 
@@ -310,7 +296,7 @@ footer a {
 }
 
 .new-address-page form {
-    background-color: rgba(254, 130, 122, 0.85);
+    background-color: rgba(100, 129, 134, 0.75);
     padding: 1em;
 }
 
@@ -338,6 +324,23 @@ footer a {
     min-height: 86.5vh;
 }
 
+.collection {
+    border: 1px solid #018EA8;
+}
+
+.collection .collection-item {
+    background-color: rgba(0, 0, 0, 0.25);
+    border: none;
+}
+
+.collection a {
+    color: #018EA8;
+}
+
+.collection .collection-item:hover {
+    background-color: rgba(133, 209, 207, 0.25);
+}
+
 
 /*
     DISPLAY FAVORITE PAGE
@@ -348,8 +351,44 @@ footer a {
     min-height: 86.5vh;
 }
 
-.display-photos img {
+.display {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: rgba(100, 129, 134, 0.6);
+}
+
+.display > * {
+    margin: 0.5em;
+}
+
+.display p {
+    font-size: 1.5em;
+}
+
+.num-favorited {
+    grid-column: 1 / 6;
+}
+
+.display-address {
+    grid-column: 2 / 4;
+}
+
+.display-hours-open {
+    grid-column: 2/6;
+    font-size: 0.8em;
+}
+
+.display img {
     max-height: 15em;
+}
+
+.day-display {
+    display: inline-block;
+    margin: 0 0.5em;
+}
+
+.day-display:first-child {
+    font-size: 1em;
 }
 
 
@@ -406,6 +445,7 @@ footer a {
 
 #display-yelp-result p {
     font-size: 1.5em;
+    line-height: 1.5;
 }
 
 #display-yelp-result a {
@@ -414,10 +454,6 @@ footer a {
 
 #display-yelp-result a:hover {
     background-color: white;
-}
-
-.display-address {
-    margin: 0;
 }
 
 
@@ -429,6 +465,9 @@ footer a {
     nav .brand-logo {
         left: 20%;
     }
+    .display {
+        font-size: 1em;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -438,5 +477,8 @@ footer a {
     }
     .height-giver {
         height: initial;
+    }
+    .display {
+        font-size: 0.75em
     }
 }
