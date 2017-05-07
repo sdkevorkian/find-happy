@@ -62,11 +62,14 @@ router.get('/:id', function(req, res) {
             .then(function(favorite) {
                 client.business(favorite.yelpId)
                     .then(function(response) {
-                        var hoursOpen = response.jsonBody.hours[0].open;
+                        console.log(response);
                         var hoursOpenArray = [];
-                        hoursOpen.forEach(function(day) {
-                            hoursOpenArray.push(convertTime(day.start, day.end, day.day));
-                        });
+                        if (response.jsonBody.hours) {
+                            var hoursOpen = response.jsonBody.hours[0].open;
+                            hoursOpen.forEach(function(day) {
+                                hoursOpenArray.push(convertTime(day.start, day.end, day.day));
+                            });
+                        }
 
                         res.render('favorites/display', { favorite: response.jsonBody, numFavorited: numFavorited, hoursOpen: hoursOpenArray });
                     }).catch(function(err) {

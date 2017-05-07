@@ -17,25 +17,33 @@
                         <p>rating:</p>
                         <p><%=favorite.rating%>/5</p>
                 </div>
-                <p><%=favorite.price%></p>
+                <p>
+                        <% if (favorite.price){%>
+                            <%=favorite.price%>
+                         <%}%>
+                </p>
 
-
-                <%if (favorite.hours[0]["is_open_now"]){%>
-                    <p>currently open!!</p>
-                <%} else { %>
-                    <p>currently closed</p>
-                    <%}%>
+                <%if (favorite.hours){%>
+                    <%if (favorite.hours[0]["is_open_now"]){%>
+                        <p>currently open!!</p>
+                    <%} else { %>
+                        <p>currently closed</p>
+                     <%}%>
+                <%}%>
 
                     <div class="display-hours-open">
-                        <%hoursOpen.forEach(function(day){%>
-                        <div class="day-display">
-                        <p><%=day.day%></p>
-                        <p><%=day.start%><p>
-                        <p><%=day.end%></p>
-                        </div>
-                        <%})%>
+                        <%if(hoursOpen){%>
+                                <%hoursOpen.forEach(function(day){%>
+                                    <div class="day-display">
+                                        <p><%=day.day%></p>
+                                        <p><%=day.start%><p>
+                                        <p><%=day.end%></p>
+                                    </div>
+                                <%})%>
+                        <%}%>
                     </div>
             </div>
+                    <a class="waves-effect waves-light btn-large teal lighten-3" href="<%=favorite.url%>">view on yelp</a>
                     <a class="waves-effect waves-light btn-large teal lighten-3" href="/favorites">back to favorites</a>
     </div>
 </section>

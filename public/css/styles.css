@@ -28,7 +28,12 @@ pink: #FE827A;#ff8a80   red accent-1
 */
 
 body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     font-size: 16px;
     font-family: Ikaros;
@@ -66,12 +71,14 @@ footer a {
 
 .flash-alerts {
     margin-bottom: 0;
+    width: 100%;
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
     font-family: Reckless;
     color: white;
 }
@@ -90,6 +97,10 @@ h3 {
 
 h4 {
     font-size: 4em;
+}
+
+h5 {
+    font-size: 3em;
 }
 
 .title-case {
@@ -241,6 +252,10 @@ footer a {
     min-height: 95vh;
 }
 
+.landing-page h5 {
+    margin-bottom: 1em;
+}
+
 
 /*
     LOG IN PAGE
@@ -335,7 +350,7 @@ footer a {
 }
 
 .collection .collection-item {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.5);
     border: none;
 }
 
@@ -358,7 +373,9 @@ footer a {
 }
 
 .display {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: (1fr)[5];
     grid-template-columns: repeat(5, 1fr);
     background-color: rgba(100, 129, 134, 0.6);
 }
@@ -390,7 +407,7 @@ footer a {
 
 .day-display {
     display: inline-block;
-    margin: 0 0.5em;
+    margin: 0.5em;
 }
 
 .day-display:first-child {
@@ -460,6 +477,11 @@ footer a {
 
 #display-yelp-result a:hover {
     background-color: white;
+}
+
+.disclaimer {
+    font-size: 0.8em;
+    margin: 0 1em 1em 1em;
 }
 
 
