@@ -40,12 +40,14 @@
                 </p>
                 <input class="btn teal lighten-3 waves-effect waves-light" type="submit" value="search">
                 </div>
-            </form>
-            <div id="display-yelp-result">
-
-            </div>
-            </div>
-            </div>
+          </form>
+          <div id="display-yelp-result">
+            <%if (yelpSearch.total === 0) {%>
+                <p>Unfortunately, there are no local spots of that type around. Let's try another search!</p>
+            <%}%>
+          </div>
+       </div>
+    </div>
     <div id="map" class="col m6 s12 left"></div>
 
 </div>

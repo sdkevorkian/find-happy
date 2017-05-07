@@ -2,7 +2,7 @@
 
 
 var map;
-
+var prevInfoWindow;
 var initMap = function() {
 
     // center map on coordinates of address selected
@@ -44,11 +44,24 @@ var displayYelpResults = function(business) {
     });
 
     resultMarker.addListener('click', function() {
+        console.log(prevInfoWindow);
+        if (prevInfoWindow) {
+            prevInfoWindow.close();
+        }
         var infoWindow = new google.maps.InfoWindow({
             content: '<h4>' + business.name + '</h4>'
         });
+        prevInfoWindow = infoWindow;
         infoWindow.open(map, resultMarker);
-        var html = `
+        $('#display-yelp-result').html(putYelpResultsOnPage(business));
+    });
+
+
+
+};
+
+function putYelpResultsOnPage(business) {
+    var html = `
         <h3>${business.name}</h3>
         <img src="${business.image_url}">
         <p>${business.display_phone}</p>
@@ -59,12 +72,8 @@ var displayYelpResults = function(business) {
         <input type="hidden" value="${business.id}" name="yelpId">
         <input class="btn teal lighten-3 waves-effect waves-light" type="submit" value="add to favorites">
         </form> `;
-
-
-        $('#display-yelp-result').html(html);
-
-    });
-};
+    return html;
+}
 
 
 //  beginning of app
