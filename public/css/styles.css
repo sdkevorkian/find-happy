@@ -499,6 +499,17 @@ footer a {
     .landing-title {
         font-size: 10em;
     }
+    .display img {
+        grid-column: 1 / 6;
+        margin: 0 auto;
+    }
+    .display-address {
+        grid-column: 1 / 3;
+    }
+    .display-hours-open {
+        grid-column: 1/6;
+        font-size: 0.5em;
+    }
 }
 
 @media only screen and (max-width: 600px) {

@@ -62,6 +62,6 @@ app.use('/favorites', isLoggedIn, require('./controllers/favorites'));
 app.use('/auth', require('./controllers/auth'));
 
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3001, function() {
     rowdy.print();
 });
