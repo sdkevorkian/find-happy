@@ -496,6 +496,9 @@ footer a {
     .display {
         font-size: 1em;
     }
+    .landing-title {
+        font-size: 10em;
+    }
 }
 
 @media only screen and (max-width: 600px) {
