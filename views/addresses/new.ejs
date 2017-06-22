@@ -4,7 +4,7 @@
 
         <div class="row">
 
-            <form class="col s12" method="POST" action='/addresses'>
+            <form class="col s12 new-address" method="POST" action='/addresses'>
                 <div class="row">
                   <div class="input-field col s6">
                       <input type="text" name="name" placeholder="name for address" class="validate">
@@ -13,9 +13,10 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                      <input type="text" name="address" placeholder="address" class="validate">
+                      <input type="text" name="address" placeholder="address" class="validate" id="autocomplete">
                       <label for="address" class="active">Address</label>
                   </div>
+                  <p class="address-error"></p>
                 </div>
                 <button class="btn waves-effect waves-light teal lighten-3" type="submit" name="action">SAVE
                     <i class="material-icons right">send</i>
@@ -24,3 +25,5 @@
         </div>
     </div>
 </section>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.GOOGLEMAPS_KEY%>&libraries=places&callback=initAutocomplete" async defer></script>
+              <script src="/js/autocomplete.js"></script>
