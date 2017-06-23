@@ -127,8 +127,13 @@ h5 {
 */
 
 .card-panel {
-    background-color: rgba(254, 130, 122, 0.85);
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 1px solid #80cbc4;
     border-radius: 5%;
+}
+
+.card-panel:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .card-content,
@@ -262,7 +267,8 @@ footer a {
 */
 
 .login-page {
-    background-image: url('../img/road-trippin.jpg');
+    background-image: url('../img/road-trippin.jpg'), linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.1));
+    background-blend-mode: overlay;
     min-height: 95vh;
 }
 
@@ -272,7 +278,8 @@ footer a {
 */
 
 .signup-page {
-    background-image: url('../img/snapshot.jpg');
+    background-image: url('../img/snapshot.jpg'), linear-gradient(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.1));
+    background-blend-mode: overlay;
     min-height: 95vh;
 }
 
@@ -292,7 +299,8 @@ footer a {
 */
 
 .edit-profile-page {
-    background-image: url('../img/shiny-shoes.jpg');
+    background-image: url('../img/shiny-shoes.jpg'), linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+    background-blend-mode: overlay;
     min-height: 86.5vh;
 }
 
@@ -302,7 +310,8 @@ footer a {
 */
 
 .list-addresses-page {
-    background-image: url('../img/elvis.jpg');
+    background-image: url('../img/elvis.jpg'), linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.3));
+    background-blend-mode: overlay;
     min-height: 86.5vh;
 }
 
@@ -331,7 +340,8 @@ footer a {
 */
 
 .edit-address-page {
-    background-image: url('../img/hiking-boots.jpg');
+    background-image: url('../img/hiking-boots.jpg'), linear-gradient(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.1));
+    background-blend-mode: overlay;
     min-height: 86.5vh;
 }
 
@@ -368,7 +378,8 @@ footer a {
 */
 
 .display-favorite-page {
-    background-image: url('../img/bonfire.jpg');
+    background-image: url('../img/bonfire.jpg'), linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background-blend-mode: overlay;
     min-height: 86.5vh;
 }
 
@@ -377,11 +388,12 @@ footer a {
     display: grid;
     -ms-grid-columns: (1fr)[5];
     grid-template-columns: repeat(5, 1fr);
-    background-color: rgba(100, 129, 134, 0.6);
+    width: 80%;
+    margin: 0 auto;
 }
 
 .display > * {
-    margin: 0.5em;
+    margin: 0.5em auto;
 }
 
 .display p {
@@ -471,12 +483,15 @@ footer a {
     line-height: 1.5;
 }
 
-#display-yelp-result a {
-    color: #018EA8;
+.address-details {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 15px;
 }
 
-#display-yelp-result a:hover {
-    background-color: white;
+#display-yelp-result a {
+    color: white;
 }
 
 .disclaimer {
@@ -504,11 +519,20 @@ footer a {
         margin: 0 auto;
     }
     .display-address {
-        grid-column: 1 / 3;
+        grid-column: 2 / 3;
+    }
+    .display-rating {
+        grid-column: 4 / 5;
+    }
+    .display-price {
+        grid-column: 2 / 3;
+    }
+    .display-open-now {
+        grid-column: 4 / 5;
     }
     .display-hours-open {
-        grid-column: 1/6;
-        font-size: 0.5em;
+        grid-column: 1 / 6;
+        font-size: 0.75em;
     }
 }
 

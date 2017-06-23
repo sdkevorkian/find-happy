@@ -1,18 +1,12 @@
 <section class="favorites-page center-align">
-    <div class="container">
-        <h1><%=currentUser.firstName%>'s Favorites</h1>
-
-        <ul class="collection">
-            <%favorites.forEach(function(favorite){%>
-
-
-                  <li class="collection-item"><a href="/favorites/<%=favorite.id%>">
-                  <span class="title-case"><%=favorite.yelpId.replace(/-/g, ' ');%></span></a>
-                  <a href="/favorites/<%=favorite.id %>?_method=DELETE"><i class="tiny material-icons">clear</i></a></li>
-
-
-
-            <%})%>
-        </ul>
-    </div>
+      <div class="container">
+            <h1><%=currentUser.firstName%>'s Favorites</h1>
+            <ul class="collection">
+                  <%favorites.forEach(function(favorite){%>
+                          <li class="collection-item"><a href="/favorites/<%=favorite.id%>">
+                          <span class="title-case"><%=favorite.yelpId.replace(/-/g, ' ');%></span></a>
+                          <a href="/favorites/<%=favorite.id %>?_method=DELETE"><i class="tiny material-icons">clear</i></a></li>
+                  <%})%>
+            </ul>
+      </div>
 </section>

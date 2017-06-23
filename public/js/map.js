@@ -111,10 +111,12 @@ function putYelpResultsOnPage(business) {
     var html = `
         <h3>${business.name}</h3>
         <img src="${business.image_url}">
+        <div class="address-details">
         <p>${business.display_phone}</p>
         <p>${(business.distance/1609).toFixed(1)}mi away</p>
-        <p>${business.rating}/5</p>
-        <p><a href="${business.url}" target="_blank">view on yelp</a></p>
+        <p>rating: ${business.rating}/5</p>
+        </div>
+        <p><a href="${business.url}" target="_blank" class="btn teal lighten-3 waves-effect waves-light">view on yelp</a></p>
         <form method="POST" action="/favorites">
         <input type="hidden" value="${business.id}" name="yelpId">
         <input class="btn teal lighten-3 waves-effect waves-light" type="submit" value="add to favorites">

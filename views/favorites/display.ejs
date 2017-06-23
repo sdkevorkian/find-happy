@@ -1,49 +1,48 @@
 <section class="display-favorite-page center-align">
-        <div class="container">
-            <h1><%=favorite.name%></h1>
-            <div class="display valign-wrapper">
-            <%if (numFavorited > 1) {%>
-            <h4 class="num-favorited"><%=numFavorited%> users love this place!</h4>
+    <h1><%=favorite.name%></h1>
+    <div class="display valign-wrapper">
+
+        <%if (numFavorited > 1) {%>
+        <h4 class="num-favorited"><%=numFavorited%> users love this place!</h4>
+        <%}%>
+        <img src = "<%=favorite.image_url%>">
+        <div class="display-address">
+            <%favorite.location.display_address.forEach(function(line){%>
+                <p> <%=line%> </p>
+            <%})%>
+            <p><%=favorite.phone%></p>
+        </div>
+        <div class="display-rating">
+                <p>rating:</p>
+                <p><%=favorite.rating%>/5</p>
+        </div>
+        <div class="display-price">
+                <% if (favorite.price){%>
+                <p>price:</p>
+                    <%=favorite.price%>
+                 <%}%>
+        </div>
+        <div class="display-open-now">
+            <%if (favorite.hours){%>
+                <%if (favorite.hours[0]["is_open_now"]){%>
+                    <p>currently open!!</p>
+                <%} else { %>
+                    <p>currently closed</p>
+                 <%}%>
             <%}%>
-                <img src = "<%=favorite.image_url%>">
-
-                <div class="display-address">
-                    <%favorite.location.display_address.forEach(function(line){%>
-                        <p > <%=line%> </p>
+        </div>
+        <div class="display-hours-open">
+            <%if(hoursOpen){%>
+                    <%hoursOpen.forEach(function(day){%>
+                        <div class="day-display">
+                            <p><%=day.day%></p>
+                            <p><%=day.start%><p>
+                            <p><%=day.end%></p>
+                        </div>
                     <%})%>
-                    <p><%=favorite.phone%></p>
-                </div>
-                <div>
-                        <p>rating:</p>
-                        <p><%=favorite.rating%>/5</p>
-                </div>
-                <p>
-                        <% if (favorite.price){%>
-                            <%=favorite.price%>
-                         <%}%>
-                </p>
-
-                <%if (favorite.hours){%>
-                    <%if (favorite.hours[0]["is_open_now"]){%>
-                        <p>currently open!!</p>
-                    <%} else { %>
-                        <p>currently closed</p>
-                     <%}%>
-                <%}%>
-
-                    <div class="display-hours-open">
-                        <%if(hoursOpen){%>
-                                <%hoursOpen.forEach(function(day){%>
-                                    <div class="day-display">
-                                        <p><%=day.day%></p>
-                                        <p><%=day.start%><p>
-                                        <p><%=day.end%></p>
-                                    </div>
-                                <%})%>
-                        <%}%>
-                    </div>
-            </div>
-                    <a class="waves-effect waves-light btn-large teal lighten-3" href="<%=favorite.url%>">view on yelp</a>
-                    <a class="waves-effect waves-light btn-large teal lighten-3" href="/favorites">back to favorites</a>
+            <%}%>
+        </div>
     </div>
+    <a class="waves-effect waves-light btn-large teal lighten-3" href="<%=favorite.url%>">view on yelp</a>
+    <a class="waves-effect waves-light btn-large teal lighten-3" href="/favorites">back to favorites</a>
 </section>
