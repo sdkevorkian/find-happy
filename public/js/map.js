@@ -126,7 +126,6 @@ function putYelpResultsOnPage(business) {
 
 function displayHoveredIconText() {
     var text = $(this).siblings().val();
-    console.log(text);
     $("#search-option-desc").text(text);
 }
 
