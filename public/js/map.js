@@ -119,18 +119,32 @@ function putYelpResultsOnPage(business) {
         <p><a href="${business.url}" target="_blank" class="btn teal lighten-3 waves-effect waves-light">view on yelp</a></p>
         <form method="POST" action="/favorites">
         <input type="hidden" value="${business.id}" name="yelpId">
-        <input class="btn teal lighten-3 waves-effect waves-light" type="submit" value="add to favorites">
+        <button class="btn teal lighten-3 waves-effect waves-light" type="submit"><i class="material-icons">favorite</i>add to favorites</button>
         </form> `;
     return html;
 }
 
+function displayHoveredIconText() {
+    var text = $(this).siblings().val();
+    console.log(text);
+    $("#search-option-desc").text(text);
+}
+
+function displayCheckedIconText() {
+    var checkedRadioBtn = $('input[type="radio"]:checked');
+    if (checkedRadioBtn) {
+        $("#search-option-desc").text(checkedRadioBtn.val());
+    }
+}
 
 //  beginning of app
 $(function() {
     var businesses = yelpSearch.businesses;
     businesses.forEach(function(business) {
         displayYelpResults(business);
-
     });
 
+    var searchOptions = $(".search-icon");
+    searchOptions.on("mouseover", displayHoveredIconText);
+    searchOptions.on("mouseout", displayCheckedIconText);
 });
