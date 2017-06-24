@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
             radius: 1610
         }).then(response => {
             results = response.jsonBody;
-            res.render("addresses/map", { address: address, yelpSearch: results });
+            res.render("addresses/map", { address: address, yelpSearch: results, currentUser: req.user || null, demo: true });
         }).catch(e => {
             res.render("error/error", { error: e });
         });

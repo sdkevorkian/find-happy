@@ -116,11 +116,15 @@ function putYelpResultsOnPage(business) {
         <p>${(business.distance/1609).toFixed(1)}mi away</p>
         <p>rating: ${business.rating}/5</p>
         </div>
-        <p><a href="${business.url}" target="_blank" class="btn teal lighten-3 waves-effect waves-light">view on yelp</a></p>
-        <form method="POST" action="/favorites">
-        <input type="hidden" value="${business.id}" name="yelpId">
-        <button class="btn teal lighten-3 waves-effect waves-light" type="submit"><i class="material-icons">favorite</i>add to favorites</button>
-        </form> `;
+        <p><a href="${business.url}" target="_blank" class="btn teal lighten-3 waves-effect waves-light">view on yelp</a></p>`;
+    if (currentUser) {
+        html += `<form method="POST" action="/favorites">
+            <input type="hidden" value="${business.id}" name="yelpId">
+            <button class="btn teal lighten-3 waves-effect waves-light" type="submit"><i class="material-icons">favorite</i>add to favorites</button>
+            </form>`;
+    } else {
+        html += '<div class="col s12"><a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/login">LOGIN</a><a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/signup">SIGN UP</a></div>';
+    }
     return html;
 }
 
