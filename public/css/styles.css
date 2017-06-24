@@ -465,13 +465,45 @@ footer a {
     color: white;
 }
 
-.search-options p {
+.choices p {
     display: inline-block;
     margin: 0.5em;
 }
 
+.directions {
+    display: block;
+}
+
+.search-options i {
+    border-radius: 100%;
+    padding: 0.5em;
+}
+
 .search-options .other {
     display: block;
+}
+
+.search-options input[type=radio] {
+    display: none;
+}
+
+.search-options input[type=radio] + label {
+    color: white;
+}
+
+.search-options input[type=radio]:checked + label >i {
+    color: #85D1CF;
+    background-color: white;
+}
+
+#search-option-desc {
+    margin: 1em;
+}
+
+[type="radio"]:not(:checked)+label,
+[type="radio"]:checked+label {
+    position: inherit;
+    padding-left: 0;
 }
 
 #display-yelp-result img {
