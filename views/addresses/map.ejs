@@ -1,7 +1,15 @@
+<%if (!currentUser){%>
+  <% include ../partials/header%>
+<%}%>
+
 <div class="row map-container">
     <div class="col m6 s12 address-left center-align">
         <div class="height-giver">
-         <form class="search-options" action="/addresses/<%=address.id%>" method="GET">
+        <%if (currentUser){%>
+            <form class="search-options" action="/addresses/<%=address.id%>" method="GET">
+         <%} else {%>
+            <form class="search-options" action="/demo" method="GET">
+         <%}%>
           <p class="directions">choose a category or type your own:</p>
             <div class="choices">
               <p>
