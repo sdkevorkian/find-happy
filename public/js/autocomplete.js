@@ -18,14 +18,21 @@ function fillInAddress() {
 
 }
 
-$(".new-address").on("submit", function(e) {
-    console.log(e);
+$("form").on("submit", function(e) {
     if (!address) {
         // User entered the name of a Place that was not suggested and
         // pressed the Enter key, or the Place Details request failed.
         e.preventDefault();
-        $(".address-error").text("Please select an address from the dropdown menu");
+        $(".address-error").text("Please choose a valid address").addClass("error");
         return;
     }
 
 });
+
+// $(".").on("submit", function(e) {
+//     if (!address) {
+//         e.preventDefault();
+//         $(".to-demo").text("Please choose valid address");
+//         return;
+//     }
+// });

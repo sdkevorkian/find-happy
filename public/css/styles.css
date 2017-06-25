@@ -107,6 +107,10 @@ h5 {
     text-transform: capitalize;
 }
 
+.error {
+    color: red;
+}
+
 
 /*
     BUTTONS

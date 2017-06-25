@@ -69,7 +69,7 @@
 <!-- a few scripts -->
 
 <script>
-  var address = <%- JSON.stringify(address) %>;
+  var address = <%- JSON.stringify(address) || localStorage.address%>;
   var yelpSearch = <%-JSON.stringify(yelpSearch) %>;
   var currentUser = <%-JSON.stringify(currentUser)%>;
 </script>

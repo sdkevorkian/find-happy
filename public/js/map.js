@@ -169,6 +169,9 @@ $(function() {
     businesses.forEach(function(business) {
         displayYelpResults(business);
     });
+    if (!currentUser) {
+        localStorage.address = address;
+    }
     var lastSearch = findSearchParameter();
     checkLastSearchedTerm(lastSearch);
     var searchOptions = $(".search-icon");

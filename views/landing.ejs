@@ -3,13 +3,13 @@
         <h1 class="landing-title col s12">FIND HAPPY.</h1>
       <div class="row">
           <div class="col s12">
-          <h3>Try the Demo! Submit an Address</h3>
+          <h3 class="address-error turn-to-error">Try the Demo! Submit an Address</h3>
           <form class="center-align" method="POST" action="/demo">
-           <div class="input-field col s6 offset-s2">
+           <div class="input-field col m5 offset-m2 s12">
                 <input type="text" name="address" placeholder="address" class="validate" id="autocomplete">
                 <label for="address" class="active">Address</label>
           </div>
-            <button type="submit" class="teal lighten-2 waves-effect waves-light btn-large col s2">To the Demo!</button>
+            <button type="submit" class="teal lighten-2 waves-effect waves-light btn-large col m3 s12">To the Demo!</button>
           </form>
       </div>
         <h5 class="col s8 offset-s2">make an account to find happy hours (and more!) near your favorite locations!</h5>
@@ -21,4 +21,4 @@
     </div>
 </div>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.GOOGLEMAPS_KEY%>&libraries=places&callback=initAutocomplete" async defer></script>
-        <script src="/js/autocomplete.js"></script>
+<script src="/js/autocomplete.js"></script>
