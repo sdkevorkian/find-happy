@@ -1,10 +1,6 @@
-// click handler that redirects using jquery ajax
-
-
 var map;
 var prevInfoWindow;
 var initMap = function() {
-
     // center map on coordinates of address selected
     var addressCoords = { lat: address.lat, lng: address.long };
     map = new google.maps.Map(document.getElementById('map'), {
@@ -75,9 +71,7 @@ var initMap = function() {
         });
         infoWindow.open(map, addressMarker);
     });
-
 };
-
 
 //display all yelp search results
 var displayYelpResults = function(business) {
@@ -91,7 +85,6 @@ var displayYelpResults = function(business) {
     });
 
     resultMarker.addListener('click', function() {
-        console.log(prevInfoWindow);
         if (prevInfoWindow) {
             prevInfoWindow.close();
         }
@@ -102,9 +95,6 @@ var displayYelpResults = function(business) {
         infoWindow.open(map, resultMarker);
         $('#display-yelp-result').html(putYelpResultsOnPage(business));
     });
-
-
-
 };
 
 function putYelpResultsOnPage(business) {
@@ -152,6 +142,7 @@ function findSearchParameter() {
     }
 }
 
+// last search shown on radio buttons
 function checkLastSearchedTerm(search) {
     if (search) {
         var radios = $('input[type="radio"]');
