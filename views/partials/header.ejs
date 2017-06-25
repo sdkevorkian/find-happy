@@ -5,10 +5,10 @@
               <a href="/" class="brand-logo" class="valign-wrapper">find happy.</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                   <%if (currentUser){%>
-                      <li ><a href="/auth/logout" class="valign-wrapper">Logout</a></li>
                       <li><a href="/auth/profile"  class="valign-wrapper">Profile</a></li>
                       <li><a href="/addresses"  class="valign-wrapper">Your Addresses</a></li>
                       <li><a href="/favorites"  class="valign-wrapper">Your Favorites</a></li>
+                      <li ><a href="/auth/logout" class="valign-wrapper">Logout</a></li>
                   <%}else {%>
                       <li ><a href="/auth/logout" class="valign-wrapper">Login</a></li>
                       <li><a href="/auth/profile"  class="valign-wrapper">Sign Up</a></li>
@@ -21,10 +21,10 @@
                     <!-- Dropdown Structure -->
                     <ul id='dropdown1' class='dropdown-content'>
                       <%if (currentUser){%>
-                          <li ><a href="/auth/logout" class="valign-wrapper">Logout</a></li>
                           <li><a href="/auth/profile"  class="valign-wrapper">Profile</a></li>
                           <li><a href="/addresses"  class="valign-wrapper">Your Addresses</a></li>
                           <li><a href="/favorites"  class="valign-wrapper">Your Favorites</a></li>
+                          <li ><a href="/auth/logout" class="valign-wrapper">Logout</a></li>
                       <%}else {%>
                           <li ><a href="/auth/logout" class="valign-wrapper">Login</a></li>
                           <li><a href="/auth/profile"  class="valign-wrapper">Sign Up</a></li>

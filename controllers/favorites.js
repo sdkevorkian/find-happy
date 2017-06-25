@@ -36,11 +36,10 @@ router.post('/', function(req, res) {
             .then(function(user) {
                 user.addFavorite(favorite)
                     .then(function(favorite) {
-                        // add below flash message, if favorite you added it! if not, it was already there... need to read documentation better
-                        // req.flash("you've added this already", error.message);
+                        req.flash("success", "favorite added!! click on Your Favorites to view!");
                         res.redirect('back');
                     }).catch(function(err) {
-                        console.log(err);
+                        req.flash("error", "something went wrong!" + err);
                         res.render('error/error', { error: err });
                     });
             });
