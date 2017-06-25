@@ -60,7 +60,7 @@ router.get('/:id', function(req, res) {
             radius: 1610 // ~ a mile
         }).then(response => {
             results = response.jsonBody;
-            res.render('addresses/map', { address: address, yelpSearch: results });
+            res.render('addresses/map', { address: address, yelpSearch: results, currentUser: req.user, demo: false });
         }).catch(e => {
             res.render('error/error', { error: e });
         });

@@ -116,17 +116,20 @@ function putYelpResultsOnPage(business) {
         <p>${(business.distance/1609).toFixed(1)}mi away</p>
         <p>rating: ${business.rating}/5</p>
         </div>
-        <p><a href="${business.url}" target="_blank" class="btn teal lighten-3 waves-effect waves-light">view on yelp</a></p>
-        <form method="POST" action="/favorites">
-        <input type="hidden" value="${business.id}" name="yelpId">
-        <button class="btn teal lighten-3 waves-effect waves-light" type="submit"><i class="material-icons">favorite</i>add to favorites</button>
-        </form> `;
+        <p><a href="${business.url}" target="_blank" class="btn teal lighten-3 waves-effect waves-light">view on yelp</a></p>`;
+    if (currentUser) {
+        html += `<form method="POST" action="/favorites">
+            <input type="hidden" value="${business.id}" name="yelpId">
+            <button class="btn teal lighten-3 waves-effect waves-light" type="submit"><i class="material-icons">favorite</i>add to favorites</button>
+            </form>`;
+    } else {
+        html += '<div class="col s12"><a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/login">LOGIN</a><a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/signup">SIGN UP</a></div>';
+    }
     return html;
 }
 
 function displayHoveredIconText() {
     var text = $(this).siblings().val();
-    console.log(text);
     $("#search-option-desc").text(text);
 }
 
@@ -137,13 +140,40 @@ function displayCheckedIconText() {
     }
 }
 
+// credit to: http://www.jquerybyexample.net/2012/05/how-to-get-querystring-value-using.html
+function findSearchParameter() {
+    var url = window.location.search;
+    var findSearch = /=(\w+\+?\w+)/;
+    var match = findSearch.exec(url);
+    if (match) {
+        return match[1].replace('+', ' ');
+    } else {
+        return null;
+    }
+}
+
+function checkLastSearchedTerm(search) {
+    if (search) {
+        var radios = $('input[type="radio"]');
+        radios.each(function() {
+            if ($(this).val() === search) {
+                $(this).prop("checked", true);
+            }
+        });
+    }
+}
+
 //  beginning of app
 $(function() {
     var businesses = yelpSearch.businesses;
     businesses.forEach(function(business) {
         displayYelpResults(business);
     });
-
+    if (!currentUser) {
+        localStorage.address = address;
+    }
+    var lastSearch = findSearchParameter();
+    checkLastSearchedTerm(lastSearch);
     var searchOptions = $(".search-icon");
     searchOptions.on("mouseover", displayHoveredIconText);
     searchOptions.on("mouseout", displayCheckedIconText);

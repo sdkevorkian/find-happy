@@ -1,9 +1,7 @@
 <section class="new-address-page center-align">
     <div class="container">
         <h1>Add a New Address, <%=user.firstName%></h1>
-
         <div class="row">
-
             <form class="col s12 new-address" method="POST" action='/addresses'>
                 <div class="row">
                   <div class="input-field col s6">
@@ -25,5 +23,5 @@
         </div>
     </div>
 </section>
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.GOOGLEMAPS_KEY%>&libraries=places&callback=initAutocomplete" async defer></script>
-              <script src="/js/autocomplete.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.GOOGLEMAPS_KEY%>&libraries=places&callback=initAutocomplete" async defer></script>
+        <script src="/js/autocomplete.js"></script>

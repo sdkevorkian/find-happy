@@ -1,7 +1,15 @@
+<%if (!currentUser){%>
+  <% include ../partials/header%>
+<%}%>
+
 <div class="row map-container">
     <div class="col m6 s12 address-left center-align">
         <div class="height-giver">
-         <form class="search-options" action="/addresses/<%=address.id%>" method="GET">
+        <%if (!demo){%>
+            <form class="search-options" action="/addresses/<%=address.id%>" method="GET">
+         <%} else {%>
+            <form class="search-options" action="/demo" method="GET">
+         <%}%>
           <p class="directions">choose a category or type your own:</p>
             <div class="choices">
               <p>
@@ -61,8 +69,9 @@
 <!-- a few scripts -->
 
 <script>
-  var address = <%- JSON.stringify(address) %>;
+  var address = <%- JSON.stringify(address) || localStorage.address%>;
   var yelpSearch = <%-JSON.stringify(yelpSearch) %>;
+  var currentUser = <%-JSON.stringify(currentUser)%>;
 </script>
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.GOOGLEMAPS_KEY%>&callback=initMap">
