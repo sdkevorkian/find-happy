@@ -8,7 +8,7 @@
         <img src = "<%=favorite.image_url%>">
         <div class="display-address">
             <%favorite.location.display_address.forEach(function(line){%>
-                <p> <%=line%> </p>
+                <p><%=line%></p>
             <%})%>
             <p><%=favorite.phone%></p>
         </div>
@@ -19,7 +19,7 @@
         <div class="display-price">
                 <% if (favorite.price){%>
                 <p>price:</p>
-                    <%=favorite.price%>
+                    <p><%=favorite.price%></p>
                  <%}%>
         </div>
         <div class="display-open-now">
@@ -43,6 +43,6 @@
             <%}%>
         </div>
     </div>
-    <a class="waves-effect waves-light btn-large teal lighten-3" href="<%=favorite.url%>">view on yelp</a>
+    <a class="waves-effect waves-light btn-large teal lighten-3" href="<%=favorite.url%>" target="_blank">view on yelp</a>
     <a class="waves-effect waves-light btn-large teal lighten-3" href="/favorites">back to favorites</a>
 </section>

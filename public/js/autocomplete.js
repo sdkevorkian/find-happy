@@ -23,7 +23,7 @@ $("form").on("submit", function(e) {
         // User entered the name of a Place that was not suggested and
         // pressed the Enter key, or the Place Details request failed.
         e.preventDefault();
-        $(".address-error").text("Please choose a valid address").addClass("error");
+        $(".address-error").text("Please choose an address from the dropdown").addClass("error");
         return;
     }
 
