@@ -253,12 +253,13 @@ footer a {
 }
 
 .landing-page {
-    background-image: url('../img/bar-scene.jpg');
+    background-image: url('../img/bar-scene.jpg'), linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    background-blend-mode: overlay;
     min-height: 95vh;
 }
 
 .landing-page h5 {
-    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 

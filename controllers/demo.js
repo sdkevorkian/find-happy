@@ -5,6 +5,13 @@ var geocoder = require('geocoder');
 var router = express.Router();
 var client = yelp.client(process.env.ACCESS_KEY);
 
+var demoAddress;
+
+router.post('/', function(req, res) {
+    demoAddress = req.body.address;
+    res.redirect('/demo');
+});
+
 router.get('/', function(req, res) {
     var searchTerms;
     if (req.query.otherSearch) {
@@ -15,7 +22,7 @@ router.get('/', function(req, res) {
     if (!searchTerms) {
         searchTerms = "happy hour";
     }
-    var address = { name: '17753 25th ave ne, shoreline wa 98155' };
+    var address = { name: demoAddress };
     var results;
     geocoder.geocode(address.name, function(err, data) {
         if (err) console.log(err);

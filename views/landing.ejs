@@ -1,12 +1,22 @@
 <div class="center-align valign-wrapper landing-page">
     <div class="row">
         <h1 class="landing-title col s12">FIND HAPPY.</h1>
-        <h5 class="col s8 offset-s2">make an account to find happy hours (and more!) near your favorite locations!</h5>
       <div class="row">
+          <div class="col s12">
+          <h3>Try the Demo! Submit an Address</h3>
+          <form class="center-align" method="POST" action="/demo">
+           <div class="input-field col s6 offset-s2">
+                <input type="text" name="address" placeholder="address" class="validate" id="autocomplete">
+                <label for="address" class="active">Address</label>
+          </div>
+            <button type="submit" class="teal lighten-2 waves-effect waves-light btn-large col s2">To the Demo!</button>
+          </form>
+      </div>
+        <h5 class="col s8 offset-s2">make an account to find happy hours (and more!) near your favorite locations!</h5>
           <div class="col s12">
               <a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/login">LOGIN</a>
               <a class="waves-effect waves-light btn-large teal lighten-3" href="/auth/signup">SIGN UP</a>
           </div>
-      </div>
   </div>
+</div>
 </div>
