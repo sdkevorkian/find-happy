@@ -140,6 +140,11 @@ function displayCheckedIconText() {
     }
 }
 
+// function findSearchParameter() {
+
+    // }
+
+
 //  beginning of app
 $(function() {
     var businesses = yelpSearch.businesses;
