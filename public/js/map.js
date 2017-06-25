@@ -140,10 +140,28 @@ function displayCheckedIconText() {
     }
 }
 
-// function findSearchParameter() {
+// credit to: http://www.jquerybyexample.net/2012/05/how-to-get-querystring-value-using.html
+function findSearchParameter() {
+    var url = window.location.search;
+    var findSearch = /=(\w+\+?\w+)/;
+    var match = findSearch.exec(url);
+    if (match) {
+        return match[1].replace('+', ' ');
+    } else {
+        return null;
+    }
+}
 
-    // }
-
+function checkLastSearchedTerm(search) {
+    if (search) {
+        var radios = $('input[type="radio"]');
+        radios.each(function() {
+            if ($(this).val() === search) {
+                $(this).prop("checked", true);
+            }
+        });
+    }
+}
 
 //  beginning of app
 $(function() {
@@ -151,7 +169,8 @@ $(function() {
     businesses.forEach(function(business) {
         displayYelpResults(business);
     });
-
+    var lastSearch = findSearchParameter();
+    checkLastSearchedTerm(lastSearch);
     var searchOptions = $(".search-icon");
     searchOptions.on("mouseover", displayHoveredIconText);
     searchOptions.on("mouseout", displayCheckedIconText);
