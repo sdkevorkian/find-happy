@@ -1,4 +1,4 @@
- <h1>This is a site where you can save addresses and search for fun places nearby! Very useful for travelling to unfamiliar locations.</h1>
+ <h1>This is a site where you can save addresses and search for fun places nearby! Very useful for traveling to unfamiliar locations.</h1>
 
  <h2>technologies used</h2>
 HTML, CSS, Javascript, Node.js, Express.js, Materialize CSS, Google Maps API, Yelp API, Google Geocoder API
