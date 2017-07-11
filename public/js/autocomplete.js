@@ -29,10 +29,6 @@ $("form").on("submit", function(e) {
 
 });
 
-// $(".").on("submit", function(e) {
-//     if (!address) {
-//         e.preventDefault();
-//         $(".to-demo").text("Please choose valid address");
-//         return;
-//     }
-// });
+$("input").on("focus", function() {
+    address = null;
+});
