@@ -34,7 +34,7 @@ $("input").on("focus", function() {
 });
 
 // only lets you submit with enter on submit button
-$(document).on("keypress", ":input:not([type=submit])", function(event) {
+$(document).on("keypress", "input:not([type=submit])", function(event) {
     if (event.keyCode == 13) {
         event.preventDefault();
     }
