@@ -15,13 +15,12 @@ function initAutocomplete() {
 function fillInAddress() {
     address = autocomplete.getPlace();
     document.getElementById('autocomplete').value = address.name;
-
 }
 
 $("form").on("submit", function(e) {
     if (!address) {
         // User entered the name of a Place that was not suggested and
-        // pressed the Enter key, or the Place Details request failed.
+        // pressed the Enter key
         e.preventDefault();
         $(".address-error").text("Please choose an address from the dropdown").addClass("error");
         return;
@@ -29,6 +28,14 @@ $("form").on("submit", function(e) {
 
 });
 
+// resets address to null until
 $("input").on("focus", function() {
     address = null;
+});
+
+// only lets you submit with enter on submit button
+$(document).on("keypress", ":input:not([type=submit])", function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+    }
 });
